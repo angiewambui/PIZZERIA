@@ -64,48 +64,7 @@ h1 {
   border-radius: 10%;
   padding: 10px;
 }
-#about-us{
-  min-height: 70vh;
-  align-items: center;
 
-}
-.about-pic {
-  background-color: #ffa500;
-  padding-top: 10px;
-  padding-right: 10px;
-  padding-bottom: 10px;
-  padding-left: 0px;
-}
-#about-us .content{
-  padding: 65px 50px 85px;
-  width: 100%;
-  background-color: #ffa500;
-  float:right;
-  text-align: justify;
-  overflow-x: hidden;
-}
-.d-flex{
-  display: flex !important;
-}
-.arrow
-{
-  position: relative;
-  left: 50%;
-  top: 90%;
-  margin-left:-20px;
-  
-}
-
-.bounce {
-  animation: bounce 2s infinite;
-}
-
-.order h2{
-  text-align: center;
-}
-#variety{
-  padding-top: 30px;
-}
 .order{
   background-attachment: fixed;
   background-image: url("/images/pizza2.jpg");
