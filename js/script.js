@@ -198,3 +198,6 @@ $(document).ready(function(){
    event.preventDefault();
   });
 });
+$("button.pickup").click(function(event){
+  alert("Pickup your delivery in 45 min AT DONS PIZZERIA")
+});
