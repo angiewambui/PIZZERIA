@@ -15,7 +15,8 @@ This is a website that enables customers to order pizzafrom the comfort of their
 ## Known Bugs
 There are no known Bugs.
 ## Screenshot
-<img src="/images/Screenshot from 2020-03-02 10-22-23.png" alt="Screenshot">
+
+<img src="/" alt="Screenshot">
 
 ## Technologies Used
 Language used is HTML, CSS, JAVASCRIPT AND JQUERY.Styling was gotten from Material Design Bootstrap and Google fonts.
