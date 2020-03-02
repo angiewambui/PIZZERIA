@@ -1,3 +1,4 @@
+// business Logic for Order
 var price , crust_price, topping_price ;
 let total = 0;
 function Getpizza( name,size,crust,topping, total ){
@@ -16,6 +17,8 @@ $(document).ready(function(){
      $("#information").hide();
     $("div.choise").slideDown(1000);
   });
+
+  // User-interface Logic
 
   $("button.proceed").click(function(event){
    let pname = $(".name option:selected").val();
@@ -90,12 +93,14 @@ $(document).ready(function(){
     
 // Add pizza button
     $("button.addPizza").click(function(){
+      event.preventDefault();
       let pname = $(".name option:selected").val();
       let psize = $("#size option:selected").val();
       let pcrust = $("#crust option:selected").val();
       let ptopping = [];
       $.each($("input[name='toppings']:checked"), function(){            
           ptopping.push($(this).val());
+          event.preventDefault();
       });
       console.log(ptopping.join(", "));
       switch(psize){
@@ -131,6 +136,7 @@ $(document).ready(function(){
           break;
           default:
             console.log("No price"); 
+
         }
         let topping_value = ptopping.length*50;
         console.log("toppins value" + topping_value);
@@ -144,11 +150,10 @@ $(document).ready(function(){
 
       $("#ordersmade").append('<tr><td id="pizzaname">'+newOrder.name +'</td><td id="pizzasize">' + newOrder.size + '</td><td id="pizzacrust">'+newOrder.crust + '</td><td id="pizzatopping">'+newOrder.topping+'</td><td id="totals">'+newOrder.total+'</td></tr>');
        console.log(newOrder);
-      
-  
 
     });
     $("button#checkout").click(function(){ 
+      event.preventDefault();
       $("button#checkout").hide();
       $("button.addPizza").hide();
       $("button.deliver").slideDown(1000);
@@ -159,6 +164,7 @@ $(document).ready(function(){
 
     
     $("button.deliver").click(function(){
+      event.preventDefault();
       $(".pizzatable").hide();
       $(".choise h2").hide();
       $(".delivery").slideDown(1000);
@@ -184,6 +190,8 @@ $(document).ready(function(){
       let location = $("input#location").val();
 
       if ($("input#name").val() && $("input#phone").val() && $("input#location").val()!=""){
+        
+        alert("Dear" + name + "Your order has been processed to " + location + "Your pizza will arrive at your door post .Thankyou for ordering at Don Pizzeria ");
   
         $("#finallmessage").append(person+", We have recieved your order and it will be delivered to you at "+location+ ". Prepare sh. "+deliceryamount);
       }
