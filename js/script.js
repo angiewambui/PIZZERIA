@@ -192,9 +192,7 @@ $(document).ready(function(){
       if ($("input#name").val() && $("input#phone").val() && $("input#location").val()!=""){
         
         alert("Dear" + name + "Your order has been processed to " + location + "Your pizza will arrive at your door post .Thankyou for ordering at Don Pizzeria ");
-  
-        $("#finallmessage").append(person+", We have recieved your order and it will be delivered to you at "+location+ ". Prepare sh. "+deliceryamount);
-      }
+        
       else {
         alert("Please fill in the details for delivery!");
         $(".delivery").show();
