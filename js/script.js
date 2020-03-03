@@ -1,6 +1,8 @@
 // business Logic for Order
-var price , crust_price, topping_price ;
-let total = 0;
+//var price , crust_price, topping_price ;
+//let total = 0;
+//var price , crust_price, topping_price ;
+//let total = 0;
 function Getpizza( name,size,crust,topping, total ){
   this.name = name;
   this.size = size;
@@ -9,24 +11,14 @@ function Getpizza( name,size,crust,topping, total ){
   this.total = total;
 }
 
-
-
-$(document).ready(function(){
-  $("button.proceed").click(function(){
-    $("button.proceed").hide();
-     $("#information").hide();
-    $("div.choise").slideDown(1000);
-  });
-
-  // User-interface Logic
-
   $("button.proceed").click(function(event){
-   let pname = $(".name option:selected").val();
-   let psize = $("#size option:selected").val();
-   let pcrust = $("#crust option:selected").val();
-   let ptopping = [];
+   var  pname = $(".name option:selected").val();
+   var psize = $("#size option:selected").val();
+   var pcrust = $("#crust option:selected").val();
+   var ptopping = [];
    $.each($("input[name='toppings']:checked"), function(){            
        ptopping.push($(this).val());
+       event.preventDefault();
    });
    console.log(ptopping.join(", "));
 
@@ -52,10 +44,10 @@ $(document).ready(function(){
       case "0":
         crust_price = 0;
       break;
-      case "Thick":
+      case "Crispy":
         crust_price = 200;
       break;
-      case "Thin":
+      case "Stuffed":
         crust_price = 250;
       break;
       case "Gluten-free":
@@ -101,7 +93,7 @@ $(document).ready(function(){
       $.each($("input[name='toppings']:checked"), function(){            
           ptopping.push($(this).val());
           event.preventDefault();
-      });
+              });
       console.log(ptopping.join(", "));
       switch(psize){
         case "0":
@@ -125,10 +117,10 @@ $(document).ready(function(){
           case "0":
             crust_price = 0;
           break;
-          case "Thick":
+          case "Crispy":
             crust_price = 200;
           break;
-          case "Thin":
+          case "Stuffed":
             crust_price = 150;
           break;
           case "Gluten-free":
@@ -136,7 +128,6 @@ $(document).ready(function(){
           break;
           default:
             console.log("No price"); 
-
         }
         let topping_value = ptopping.length*50;
         console.log("toppins value" + topping_value);
@@ -145,13 +136,16 @@ $(document).ready(function(){
 
         checkoutTotal = checkoutTotal + total;
         console.log(checkoutTotal);
-    
+      // constractor function
       var newOrder = new Getpizza(pname, psize, pcrust,ptopping,total);
 
       $("#ordersmade").append('<tr><td id="pizzaname">'+newOrder.name +'</td><td id="pizzasize">' + newOrder.size + '</td><td id="pizzacrust">'+newOrder.crust + '</td><td id="pizzatopping">'+newOrder.topping+'</td><td id="totals">'+newOrder.total+'</td></tr>');
-       console.log(newOrder);
+      console.log(newOrder);
+      
+      
 
     });
+    // Checkout button
     $("button#checkout").click(function(){ 
       event.preventDefault();
       $("button#checkout").hide();
@@ -162,8 +156,7 @@ $(document).ready(function(){
       $("#pizzatotal").append("Your bill is sh. "+checkoutTotal);
     });
 
-    
-    $("button.deliver").click(function(){
+    $("button.deliver").click(function(){ 
       event.preventDefault();
       $(".pizzatable").hide();
       $(".choise h2").hide();
@@ -176,7 +169,6 @@ $(document).ready(function(){
       $("#totalbill").append("Your bill plus delivery fee is: "+deliceryamount);
     });
 
-    
     $("button#final-order").click(function(event){
       event.preventDefault();
 
@@ -190,9 +182,11 @@ $(document).ready(function(){
       let location = $("input#location").val();
 
       if ($("input#name").val() && $("input#phone").val() && $("input#location").val()!=""){
-        
-        alert("Dear" + name + "Your order has been processed to " + location + "Your pizza will arrive at your door post .Thankyou for ordering at Don Pizzeria ");
-        
+  
+        $("#finallmessage").append(person+", We have recieved your order and it will be delivered to you at "+location+ ". Prepare sh. "+deliceryamount);
+        $("#totalbill").hide();
+        $("#finallmessage").slideDown(1200);
+      }
       else {
         alert("Please fill in the details for delivery!");
         $(".delivery").show();
@@ -201,7 +195,6 @@ $(document).ready(function(){
     });
    event.preventDefault();
   });
-});
 $("button.pickup").click(function(event){
   alert("Pickup your delivery in 45 min AT DONS PIZZERIA")
 });
